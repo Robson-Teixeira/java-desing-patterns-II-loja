@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 import br.com.alura.loja.service.EmailService;
+import br.com.alura.loja.service.PedidoLogService;
 import br.com.alura.loja.service.PedidoService;
 import br.com.alura.loja.service.PedidoServiceHandler;
 
@@ -19,8 +20,11 @@ public class TestePedido {
 				cliente, valorOrcamento, quantidadeItens);
 
 		PedidoServiceHandler pedidoServiceHandler = new PedidoServiceHandler(
-				Arrays.asList(pedidoService, new EmailService()));
-		pedidoServiceHandler.executa(pedidoService);
+				Arrays.asList(
+						pedidoService, 
+						new EmailService(), 
+						new PedidoLogService()));
+		pedidoServiceHandler.executar(pedidoService);
 
 	}
 

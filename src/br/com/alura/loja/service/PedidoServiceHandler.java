@@ -17,7 +17,7 @@ public class PedidoServiceHandler {
 		this.acaoPedido = acaoPedido;
 	}
 	
-	public void executa(PedidoService pedidoService) {
+	public void executar(PedidoService pedidoService) {
 
 		Orcamento orcamento = new Orcamento();
 

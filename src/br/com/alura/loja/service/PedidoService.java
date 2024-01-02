@@ -29,7 +29,8 @@ public class PedidoService implements AcaoPedido {
 	public int getQuantidadeItens() {
 		return quantidadeItens;
 	}
-	
+
+	@Override
 	public void executarAcao(Pedido pedido) {
 		PedidoDAO pedidoDao = new PedidoDAO();
 		pedidoDao.salvar(pedido);
