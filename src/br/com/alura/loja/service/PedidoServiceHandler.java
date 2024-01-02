@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import br.com.alura.loja.modelo.AcaoPedido;
+import br.com.alura.loja.modelo.ItemOrcamento;
 import br.com.alura.loja.modelo.Orcamento;
 import br.com.alura.loja.modelo.Pedido;
 
@@ -18,8 +19,10 @@ public class PedidoServiceHandler {
 	
 	public void executa(PedidoService pedidoService) {
 
-		Orcamento orcamento = new Orcamento(
-				pedidoService.getValorOrcamento(), pedidoService.getQuantidadeItens());
+		Orcamento orcamento = new Orcamento();
+
+		for (int i = 0; i < pedidoService.getQuantidadeItens(); i++)
+			orcamento.adicionarItem(new ItemOrcamento(pedidoService.getValorOrcamento()));
 
 		Pedido pedido = new Pedido(
 				pedidoService.getCliente(), LocalDateTime.now(), orcamento);

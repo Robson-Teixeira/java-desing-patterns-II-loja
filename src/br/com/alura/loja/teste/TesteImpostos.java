@@ -5,13 +5,16 @@ import java.math.BigDecimal;
 import br.com.alura.loja.modelo.Orcamento;
 import br.com.alura.loja.modelo.ICMS;
 import br.com.alura.loja.modelo.ISS;
+import br.com.alura.loja.modelo.ItemOrcamento;
 import br.com.alura.loja.service.CalculadoraImpostosService;
 
 public class TesteImpostos {
 
 	public static void main(String[] args) {
 
-		Orcamento orcamento = new Orcamento(new BigDecimal("100"), 1);
+		Orcamento orcamento = new Orcamento();
+		orcamento.adicionarItem(new ItemOrcamento(new BigDecimal("100")));
+
 		CalculadoraImpostosService calculadoraImpostosService = new CalculadoraImpostosService();
 
 		System.out.println("Imposto ICMS: " + calculadoraImpostosService

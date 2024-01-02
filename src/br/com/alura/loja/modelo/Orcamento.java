@@ -1,16 +1,18 @@
 package br.com.alura.loja.modelo;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Orcamento {
 
 	private BigDecimal valor;
-	private int quantidadeItens;
+	private List<ItemOrcamento> itensOrcamento;
 	private SituacaoOrcamento situacaoOrcamento;
 
-	public Orcamento(BigDecimal valor, int quantidadeItens) {
-		this.valor = valor;
-		this.quantidadeItens = quantidadeItens;
+	public Orcamento() {
+		this.valor = BigDecimal.ZERO;
+		this.itensOrcamento = new ArrayList<ItemOrcamento>();
 		this.situacaoOrcamento = new EmAnalise();
 	}
 
@@ -19,7 +21,12 @@ public class Orcamento {
 	}
 
 	public int getQuantidadeItens() {
-		return quantidadeItens;
+		return itensOrcamento.size();
+	}
+
+	public void adicionarItem(ItemOrcamento itemOrcamento) {
+		this.valor = valor.add(itemOrcamento.getValor());
+		this.itensOrcamento.add(itemOrcamento);
 	}
 
 	public void setSituacaoOrcamento(SituacaoOrcamento situacaoOrcamento) {
