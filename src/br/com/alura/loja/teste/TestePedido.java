@@ -24,6 +24,8 @@ public class TestePedido {
 						pedidoService, 
 						new EmailService(), 
 						new PedidoLogService()));
+		
+		// Método no padrão Facade
 		pedidoServiceHandler.executar(pedidoService);
 
 	}
