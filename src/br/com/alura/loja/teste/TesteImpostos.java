@@ -15,10 +15,14 @@ public class TesteImpostos {
 		CalculadoraImpostosService calculadoraImpostosService = new CalculadoraImpostosService();
 
 		System.out.println("Imposto ICMS: " + calculadoraImpostosService
-				.calcular(orcamento, new ICMS()));
+				.calcular(orcamento, new ICMS(null)));
 
 		System.out.println("Imposto ISS: " + calculadoraImpostosService
-				.calcular(orcamento, new ISS()));
+				.calcular(orcamento, new ISS(null)));
+
+		System.out.println(
+				"Imposto ISS com ICMS: " + calculadoraImpostosService
+				.calcular(orcamento, new ISS(new ICMS(null))));
 
 	}
 

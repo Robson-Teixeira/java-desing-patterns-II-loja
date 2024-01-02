@@ -2,8 +2,26 @@ package br.com.alura.loja.modelo;
 
 import java.math.BigDecimal;
 
-public interface Imposto {
+public abstract class Imposto {
 
-	BigDecimal calcular(Orcamento orcamento);
+	private Imposto imposto;
+
+	public Imposto(Imposto imposto) {
+		this.imposto = imposto;
+	}
+
+	protected abstract BigDecimal realizarCalculo(Orcamento orcamento);
+
+	public BigDecimal calcular(Orcamento orcamento) {
+
+		BigDecimal valorImpostoTotal = realizarCalculo(orcamento);
+		BigDecimal valorImposto = BigDecimal.ZERO;
+
+		if (imposto != null)
+			valorImposto = imposto.realizarCalculo(orcamento);
+
+		return valorImpostoTotal.add(valorImposto);
+
+	}
 
 }
